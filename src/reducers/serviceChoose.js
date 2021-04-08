@@ -8,11 +8,6 @@ import {
   EDIT_SERVICE_SUCCESS,
 } from "../actions/actionTypes";
 
-// const initialState = {
-//   item: { name: "", price: "", content: ""  },
-//   loading: false,
-//   error: null,
-// };
 const initialState = {
   item: {
     name: "",
@@ -65,7 +60,6 @@ export default function serviceChooseReducer(state = initialState, action) {
         },
       };
     case EDIT_SERVICE_FAILURE:
-      //const { error } = action.payload;
       return {
         ...state,
         item: {

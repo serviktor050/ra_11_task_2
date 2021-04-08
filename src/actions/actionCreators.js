@@ -105,7 +105,7 @@ export const editServiceSuccess = () => ({
   type: EDIT_SERVICE_SUCCESS,
 });
 
-export const fetchServices = async (dispatch) => {
+export const fetchServices = () => async (dispatch) => {
   dispatch(fetchServicesRequest());
   try {
     const response = await fetch(
@@ -122,8 +122,14 @@ export const fetchServices = async (dispatch) => {
   }
 };
 
-export const addService = async (dispatch, name, price) => {
+export const addService = () => async (dispatch, getState) => {
   dispatch(addServiceRequest());
+
+  const {
+    serviceAdd: {
+      item: { name, price },
+    },
+  } = getState();
   try {
     const response = await fetch(
       "https://ra-11-task-1-server.herokuapp.com/api/services",
@@ -143,7 +149,7 @@ export const addService = async (dispatch, name, price) => {
   fetchServices(dispatch);
 };
 
-export const chooseService = async (dispatch, id) => {
+export const chooseService = (id) => async (dispatch) => {
   dispatch(serviceChooseRequest());
   try {
     const response = await fetch(
@@ -160,8 +166,9 @@ export const chooseService = async (dispatch, id) => {
   }
 };
 
-export const editService = async (dispatch, id, name, price, content) => {
+export const editService = (id, name, price, content) => async (dispatch) => {
   dispatch(editServiceRequest());
+
   try {
     const response = await fetch(
       "https://ra-11-task-1-server.herokuapp.com/api/services/",

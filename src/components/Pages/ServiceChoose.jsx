@@ -20,7 +20,7 @@ export default function ServiceChoose(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    chooseService(dispatch, id);
+    dispatch(chooseService(id));
   }, [dispatch]);
 
   const handleChange = (evt) => {
@@ -30,7 +30,7 @@ export default function ServiceChoose(props) {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    editService(dispatch, item.id, item.name, item.price, item.content);
+    dispatch(editService(item.id, item.name, item.price, item.content));
   };
 
   return (

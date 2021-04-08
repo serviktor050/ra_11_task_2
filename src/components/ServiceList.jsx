@@ -9,7 +9,7 @@ function ServiceList(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetchServices(dispatch);
+    dispatch(fetchServices());
   }, [dispatch]);
 
   const handleRemove = (id) => {
